@@ -21,15 +21,15 @@ ActiveRecord::Schema.define(version: 20140614025741) do
   end
 
   create_table "patients", force: true do |t|
-    t.string   "first_name",            limit: 30
-    t.string   "middle_name",           limit: 10
-    t.string   "last_name",             limit: 30
-    t.integer  "medical_record_number"
+    t.string   "first_name",    limit: 30,                 null: false
+    t.string   "middle_name",   limit: 10
+    t.string   "last_name",     limit: 30,                 null: false
     t.date     "date_of_birth"
     t.string   "gender"
-    t.text     "status"
-    t.integer  "location_id"
-    t.integer  "view_count"
+    t.string   "status",                                   null: false
+    t.integer  "location_id",                              null: false
+    t.integer  "view_count",               default: 0
+    t.boolean  "deleted",                  default: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
