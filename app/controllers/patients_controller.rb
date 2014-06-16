@@ -1,21 +1,37 @@
 class PatientsController < ApplicationController
 
   def new
+    render :new
   end
 
   def create
+    @patient = Patient.new(params[:patient])
+    if @patient.save
+      redirect_to patients_url
+    else
+      flash.now[:errors] = @patient.errors.full_message
+      render :new
+    end
   end
 
   def edit
+    @patient = Patient.find(params[:id])
+    render :edit
   end
 
   def update
   end
 
   def destroy
+    @patient = Patient.find(params[:id])
+    @patient.deleted = true
+    @patient.save
+    redirect_to patients_url
   end
 
   def show
+    @patient = Patient.find(params[:id])
+    render :show
   end
 
   def index
