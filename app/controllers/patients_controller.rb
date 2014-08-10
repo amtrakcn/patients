@@ -1,4 +1,6 @@
 class PatientsController < ApplicationController
+  
+  # TODO: add I18N settings
 
   def new
     render :new
